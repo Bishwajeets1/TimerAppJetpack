@@ -45,10 +45,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        timerViewModel.stopTimer()
+        if (isChangingConfigurations.not())
+            timerViewModel.stopTimer()
         super.onDestroy()
     }
 }
+
 
 @Composable
 fun TimersScreen(timerViewModel: TimerViewModel, scaffoldState: ScaffoldState) {
